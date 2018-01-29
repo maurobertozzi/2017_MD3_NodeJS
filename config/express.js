@@ -20,7 +20,7 @@ module.exports = function() {
     /**
      * Add required headers
      */
-    app.use(function (req, res, next) {
+    app.use(function(req, res, next) {
 
         /** todo: niet meer iedereen toegang geven met een wildcard */
         res.setHeader('Access-Control-Allow-Origin', '*');
@@ -32,6 +32,12 @@ module.exports = function() {
         res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization');
 
         res.setHeader('Access-Control-Allow-Credentials', true);
+
+        next();
+    });
+
+    app.use(function(req, res, next) {
+        console.log("pizza");
 
         next();
     });
